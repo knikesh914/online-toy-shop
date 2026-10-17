@@ -5,6 +5,19 @@ export default defineNuxtConfig({
   compatibilityDate: '2025-07-15',
   devtools: { enabled: false },
 
+  app: {
+    baseURL: process.env.NUXT_APP_BASE_URL || '/online-toy-shop/',
+  },
+
+  nitro: {
+    prerender: {
+      crawlLinks: false,
+      routes: ['/', '/toys'],
+      concurrency: 1,
+      failOnError: false,
+    },
+  },
+
   build: {
     transpile: ['vuetify'],
   },
